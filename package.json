@@ -15,7 +15,7 @@
     },
     "scripts": {
         "postinstall": "./bin/install.sh",
-        "test": "phantomjs ./tests.js"
+        "test": "./tests.sh"
     },
     "bundledDependencies": [
         "bh", "bem-json", "vow", "cookies", "request", "inherit", "borschik", "bem-bl"

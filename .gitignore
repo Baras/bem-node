@@ -10,6 +10,7 @@ blocks/i-jquery/__is-empty-object/*server.js
 blocks/i-jquery/__observable/*server.js
 blocks/i-jquery/_dummy/
 blocks/i-promise/i-promise.js
+blocks/i-bh/i-bh.js
 
 .bem/tmp
 tests/*
