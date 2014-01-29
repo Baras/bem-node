@@ -4,6 +4,7 @@
         {block: 'i-www-server'},
     ],
     shouldDeps: [
-        {block: 'i-response'}
+        {block: 'i-response'},
+        {block: 'i-promise'}
     ]
 })

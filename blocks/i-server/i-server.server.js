@@ -2,21 +2,20 @@
  * Node server
  * Creates a cluster of http servers
  */
+var cluster = require('cluster');
+
 BEM.decl('i-server', null, {
     /**
      * Application entry point
      *
      * @param {Object} [params]
-     * @conf {Boolean} [restartWorker=true]
+     * @conf {Number} [workers=0] if 0 — no cluster will be created
      */
     init: function (params) {
-        var cluster = require('cluster'),
-            restartWorker = !params || Boolean(params.restartWorker)
-            workers = Number(BEM.blocks['i-command'].get('workers'));
+        var workers = params.workers;
 
         if (!workers) {
-            console.log('Workers number not specified; 1 worker by default');
-            workers = 1;
+            return;
         }
 
         if (cluster.isMaster) {
@@ -24,12 +23,10 @@ BEM.decl('i-server', null, {
                 cluster.fork();
             }
             cluster.on('listening', function (worker) {
-                if (restartWorker) {
-                    worker.on('exit', function () {
-                        console.error('Worker ' + worker.process.pid + ' died, forking new one');
-                        cluster.fork();
-                    });
-                }
+                worker.on('exit', function () {
+                    console.error('Worker ' + worker.process.pid + ' died, forking new one');
+                    cluster.fork();
+                });
             });
         }
     },

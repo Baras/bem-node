@@ -5,13 +5,14 @@ BEM.decl({name: 'i-www-server', baseBlock: 'i-server'}, null, {
      * Starts HTTP server and loads priv.js
      *
      * @param {Object} [params]
-     * @conf {Number|String} initialSocket
-     * @conf {Boolean} restartWorker
+     * @conf {Number|String} socket
+     * @conf {Number} workers
      * @conf {Function} done
      */
     init: function (inParams) {
         var params = inParams || {},
-            socket = params.initialSocket || BEM.blocks['i-command'].get('socket'),
+            socket = params.socket || BEM.blocks['i-command'].get('socket'),
+            workers = params.workers || Number(BEM.blocks['i-command'].get('workers')),
             number;
 
         if (!socket) {
@@ -21,16 +22,16 @@ BEM.decl({name: 'i-www-server', baseBlock: 'i-server'}, null, {
         number = Number(socket);
         socket = !isNaN(number) ? number : socket;
 
-        this.__base({restartWorker: params.restartWorker});
+        this.__base({workers: workers});
 
         if (cluster.isMaster) {
             this.prepairSocket(socket);
-            if (params.done) {
-                params.done();
-            }
-        } else {
+        } 
+        if (!cluster.isMaster || !workers){
             this._startHTTP(socket, params.done);
             require(process.argv[1].replace('server.js', 'priv.js'));
+        } else if (params.done) {
+            params.done();
         }
     },
 

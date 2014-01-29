@@ -116,7 +116,7 @@
 
             return function () {
                 var state = _this._state.get();
-                BEM.blocks[blockName].init(state.matchers, state.req, state.res)
+                Vow.promise(BEM.blocks[blockName].init(state.matchers, state.req, state.res))
                     .fail(function (err) {
                         if (typeof err !== 'undefined') {
                             console.log('Error while routing page ' + state.req.url);
