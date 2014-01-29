@@ -12,5 +12,5 @@ blocks/i-jquery/_dummy/
 blocks/i-promise/i-promise.js
 
 .bem/tmp
-pages/*
+tests/*
 !pages/.gitignore

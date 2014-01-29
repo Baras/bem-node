@@ -61,7 +61,7 @@ tests = build.create()
     .name('tests.js')
     .target('target', '?.tests.js')
     .useFileList('tests.js')
-    .builder(makeRequires)
+    .justJoinFilesWithComments()
     .createTech();
 
 function enbMake(config) {
