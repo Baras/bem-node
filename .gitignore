@@ -11,6 +11,8 @@ blocks/i-jquery/__observable/*server.js
 blocks/i-jquery/_dummy/
 blocks/i-promise/i-promise.js
 blocks/i-bh/i-bh.js
+tests.blocks/mocha
+tests.blocks/chai
 
 .bem/tmp
 tests/*

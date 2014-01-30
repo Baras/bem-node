@@ -21,7 +21,7 @@ BN.addDecl('i-page').staticProp({
                             tag: 'link',
                             attrs: {
                                 rel: 'stylesheet',
-                                href: 'https://rawgithub.com/visionmedia/mocha/master/mocha.css'
+                                href: '/tests/simple/simple.css'
                             }
                         }
                     ]
@@ -38,14 +38,12 @@ BN.addDecl('i-page').staticProp({
                                 id: 'mocha'
                             }
                         },
-                        script('https://rawgithub.com/visionmedia/mocha/master/mocha.js'),
-                        script('https://rawgithub.com/chaijs/chai/master/chai.js'),
+                        script('/tests/simple/simple.js'),
                         script(null, function () {
                             mocha.ui('bdd');
                             mocha.reporter('html');
                             expect = chai.expect;
                         }),
-                        script('/tests/simple/simple.js'),
                         script('/tests/simple/simple.tests.js'),
                         script(null, function () {
                             if (window.mochaPhantomJS) { mochaPhantomJS.run(); }

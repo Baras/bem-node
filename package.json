@@ -15,11 +15,15 @@
     },
     "scripts": {
         "postinstall": "./bin/install.sh",
-        "test": "./tests.sh"
+        "test": "npm install --save-dev && ./tests.sh"
     },
     "bundledDependencies": [
         "bh", "bem-json", "vow", "cookies", "request", "inherit", "borschik", "bem-bl"
     ],
+    "devDependencies": {
+        "mocha": "*",
+        "chai": "*"
+    },
     "dependencies": {
         "bh": "0.1.19",
         "bem-json": "0.1.6",
