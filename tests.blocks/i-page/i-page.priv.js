@@ -45,7 +45,7 @@ BEM.decl('i-page', null, {
                             mocha.reporter('html');
                             expect = chai.expect;
                         }),
-                        script('/tests/simple/simple.tests.js'),
+                        script('/tests/simple/simple.client.tests.js'),
                         script(null, function () {
                             if (window.mochaPhantomJS) { mochaPhantomJS.run(); }
                             else { mocha.run(); }
@@ -54,5 +54,10 @@ BEM.decl('i-page', null, {
                 }
             ]
         }
-    } 
+    },
+    init: function () {
+        return this.out('');
+    }
 });
+
+BEM.blocks['i-router'].define('GET', '/', 'i-page');
