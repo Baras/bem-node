@@ -1,5 +1,8 @@
 exports.blocks = [
     {block: 'i-router', mods: {init: 'auto'}},
-    {block: 'i-test-page'},
-    {block: 'i-ycssjs'}
+    {block: 'i-content', mods: {type: 'bemhtml'}},
+    {block: 'remote-test'},
+    {block: 'i-api-request'},
+    {block: 'i-ycssjs'},
+    {block: 'i-console'}
 ]

@@ -9,7 +9,7 @@ function script(url, content) {
     }
     return tag;
 }
-BN.addDecl('i-page').staticProp({
+BEM.decl('i-page', null, {
     getPageJson: function (json) {
         return {
             tag: 'html',
@@ -38,6 +38,7 @@ BN.addDecl('i-page').staticProp({
                                 id: 'mocha'
                             }
                         },
+                        script('http://yandex.st/jquery/1.8.3/jquery.min.js'),
                         script('/tests/simple/simple.js'),
                         script(null, function () {
                             mocha.ui('bdd');
