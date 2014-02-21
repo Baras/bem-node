@@ -73,6 +73,7 @@
                 reqDomain.on('error', function (err) {
                     _this._error(err);
                     res.on('close', function () {
+                        console.log('close res');
                         reqDomain.dispose();
                     });
                 });

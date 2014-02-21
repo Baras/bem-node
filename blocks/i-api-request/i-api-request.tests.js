@@ -1,8 +1,17 @@
 describe('i-api-request', function () {
+    return;
+    try {
+        BEM.blocks['i-ajax-proxy'].allowBlock('i-test-api');
+    } catch(e) {};
+    BEM.decl({block: 'i-test-api', baseBlock: 'i-api-request'}, null, {
+        _apiHost: 'http://nodejs.org/api/'
+    });
+
+    var api = BEM.blocks['i-test-api'];
+
     it('get with full path', function (done) {
         env(function () {
-            return BEM.blocks['i-api-request']
-                .get('http://nodejs.org/api/index.json')
+            return api.get('index.json')
         })
             .then(function (r) {
                 expect('source' in r).equal(true);
@@ -12,9 +21,3 @@ describe('i-api-request', function () {
 
     });
 });
-
-describe('test', function () {
-    it('ok', function () {
-        expect(1).equal(1);
-    })
-})
